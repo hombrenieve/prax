@@ -12,6 +12,9 @@ sudo apt update
 sudo apt install -y docker-ce=${DOCKER_VERSION}
 sudo usermod -aG docker $USER
 
+echo -e "#\n### Development tools ###\n#"
+sudo apt install -y build-essential cmake tmux vim
+
 echo -e "#\n### VS CODE ###\n#"
 sudo apt install -y software-properties-common apt-transport-https wget libx11-xcb1 libasound2
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -

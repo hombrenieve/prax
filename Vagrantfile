@@ -30,6 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.forward_x11 = true
 
   # Provision
+  config.vm.provision "file", source: "tmux.conf", destination: "~/.tmux.conf"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: false
 
 end
