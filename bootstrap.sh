@@ -12,8 +12,12 @@ sudo apt update
 sudo apt install -y docker-ce=${DOCKER_VERSION} docker-compose
 sudo usermod -aG docker $USER
 
+echo -e "#\n### ZSH ###\n#"
+sudo apt install -y zsh git
+curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+
 echo -e "#\n### Development tools ###\n#"
-sudo apt install -y git tmux vim
+sudo apt install -y tmux vim
 sudo apt install -y openjdk-11-jdk-headless maven
 #chrome for selenium
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
