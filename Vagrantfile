@@ -29,9 +29,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # X11 & Compression
   config.ssh.forward_x11 = true
 
+  # Sync repos
+  config.vm.synced_folder "../repos", "/repos"
+
   # Provision
   config.vm.provision "file", source: "tmux.conf", destination: "~/.tmux.conf"
+  config.vm.provision "file", source: "gitconfig", destination: "~/.gitconfig"
   config.vm.provision :shell, path: "bootstrap.sh", privileged: false
+
+  
+  # Some ports
+  config.vm.network "forwarded_port", guest: 8080, host: 8090
 
 end
 

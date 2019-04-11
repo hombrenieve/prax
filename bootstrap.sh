@@ -9,24 +9,16 @@ sudo apt install -y apt-transport-https ca-certificates curl software-properties
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo apt update
-sudo apt install -y docker-ce=${DOCKER_VERSION}
+sudo apt install -y docker-ce=${DOCKER_VERSION} docker-compose
 sudo usermod -aG docker $USER
 
 echo -e "#\n### Development tools ###\n#"
-sudo apt install -y build-essential cmake tmux vim
-
-echo -e "#\n### VS CODE ###\n#"
-sudo apt install -y software-properties-common apt-transport-https wget libx11-xcb1 libasound2
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-sudo apt install -y code
-
-
-echo -e "#\n### VS CODE - PLUGINS ###\n#"
-VSCODE_PLUGINS_DIR=~/Downloads/vscode-plugins
-mkdir -p $VSCODE_PLUGINS_DIR
-wget -qP $VSCODE_PLUGINS_DIR https://github.com/Microsoft/vscode-cpptools/releases/download/0.22.1/cpptools-linux.vsix
-code --install-extension ${VSCODE_PLUGINS_DIR}/cpptools-linux.vsix
+sudo apt install -y git tmux vim
+sudo apt install -y openjdk-11-jdk-headless maven
+#chrome for selenium
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo mv google-chrome-stable_current_amd64.deb /var/cache/apt/archives/
+sudo apt install -y google-chrome-stable
 
 echo -e "\n-> Enabling login with password"
 sudo sed -i 's/^PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config

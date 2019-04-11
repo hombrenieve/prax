@@ -1,0 +1,28 @@
+[user]
+	name = Pablo Rebaque
+	email = pablo.rebaque.diaz@gmail.com
+[core]
+	editor = vim
+	mergetool = vimdiff
+	autocrlf = false
+[push]
+	default = current
+[merge]
+	tool = vimdiff
+[color]
+	ui = true
+[alias]
+	pl = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	pp = log --first-parent --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	s = status
+	a = commit --amend
+	bs = !git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD) $(git rev-parse --abbrev-ref HEAD)
+	ahead = !git log HEAD..$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+	co = checkout
+	find = "!git ls-files | grep "
+	findbr = "!findbr() { git ls-tree -r --name-only $1 | grep \"$2\"; }; findbr"
+	recover = "!recover() { git reset HEAD -- $1 && git checkout -- $1; }; recover"
+	stat = show --stat
+	d = difftool
+	amend = commit --amend
+	stash-untracked = "!f() { git stash; git stash -u; git stash pop stash@{1}; }; f"
