@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Mem and vCPU
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "4096"]
+    vb.customize ["modifyvm", :id, "--memory", "6144"]
     vb.customize ["modifyvm", :id, "--cpus", "2"]
     vb.linked_clone = true
   end
@@ -41,10 +41,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Some ports
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 8181, host: 8181
-  config.vm.network "forwarded_port", guest: 8282, host: 8282
-  config.vm.network "forwarded_port", guest: 8383, host: 8383
-  config.vm.network "forwarded_port", guest: 8484, host: 8484
-  config.vm.network "forwarded_port", guest: 8585, host: 8585
+  config.vm.network "forwarded_port", guest: 29418, host: 29418
+  config.vm.network "forwarded_port", guest: 9000, host: 9000 
 
 end
 
