@@ -1,6 +1,3 @@
-[user]
-	name = Pablo Rebaque
-	email = pablo.rebaque.diaz@gmail.com
 [core]
 	editor = vim
 	mergetool = vimdiff
